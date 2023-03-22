@@ -14,9 +14,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='AddItem'>
-      {/* <Stack.Screen name="Home" component={Home} /> */}
-      <Stack.Screen name="AddItem" component={AddItem} />
-        <Stack.Screen name="CreateDB" component={CreateDB} /> 
+        <Stack.Screen name="AddItem" component={AddItem} />
+        <Stack.Screen name="CreateDB" component={CreateDB} />
         <Stack.Screen name="UpdateScreen" component={UpdateScreen} />
       </Stack.Navigator>
     </NavigationContainer>

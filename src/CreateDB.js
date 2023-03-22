@@ -9,16 +9,7 @@ const CreateDB = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
 
-  const submit = async() => {
-    // addDoc(collection(db, "users"), {
-    //   username: username,
-    //   email: email
-    // }).then(() => {
-    //   console.log("data submitted")
-    //   Alert.alert("Submitted");
-    // }).catch((error) => {
-    //   console.log(error);
-    // });
+  const submit = async () => {
     if (username && email) {
       await firestore()
         .collection('users')
@@ -35,7 +26,8 @@ const CreateDB = () => {
       return;
     } else {
       Alert.alert('Please fill')
-    }}
+    }
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -77,6 +69,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     marginTop: 20
   },
- 
+
 })
 

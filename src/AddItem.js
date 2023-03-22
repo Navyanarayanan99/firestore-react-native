@@ -17,7 +17,6 @@ const AddItem = ({ navigation }) => {
 
 
     async function getUser() {
-        //  setLoading(true)
         await firestore()
             .collection('users')
             .onSnapshot((querySnapshot) => {
@@ -30,7 +29,6 @@ const AddItem = ({ navigation }) => {
                     userDetails['id'] = documentSnapshot.id;
                     temp.push(userDetails);
                     setListData(temp);
-                    // setLoading(false)
                 });
             });
     }
@@ -41,10 +39,8 @@ const AddItem = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            {/* <ActivityIndicator size ={20}animating={loading}/> */}
             <FlatList
                 data={listData}
-                // onRefresh={()=>getUser()}
                 refreshing={loading}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 renderItem={({ item, index }) => {
@@ -53,16 +49,16 @@ const AddItem = ({ navigation }) => {
                             <TouchableOpacity style={styles.userCard} key={index} onPress={() => navigation.navigate('UpdateScreen', { item })}>
                                 <Text style={styles.userCardText}>{index + 1}</Text>
                                 <Text style={styles.userCardText}>{item.username}</Text>
-                                <Text style={styles.userCardText}>{item.email}</Text>
-
-
+                                <Text style={styles.userCardText}>{item.email}
+                                </Text>
                             </TouchableOpacity>
                         </View>
                     )
                 }}
             />
             <View>
-                <TouchableOpacity style={{ height: 50, width: 100, backgroundColor: '#000', marginBottom: 30, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginLeft: 140 }}
+                <TouchableOpacity
+                    style={{ height: 50, width: 100, backgroundColor: '#000', marginBottom: 30, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginLeft: 140 }}
 
                     onPress={() => navigation.navigate('CreateDB')}>
                     <Text style={{ color: '#fff' }}>Add Item</Text>
